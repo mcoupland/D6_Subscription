@@ -1,0 +1,87 @@
+User clicks in from membership type page (premier)
+subscription	2011-10-07 12:44	subscription_validate_placeorder	 admin	
+subscription	2011-10-07 12:44	subscription_get_membershipoffer	 admin	
+subscription	2011-10-07 12:44	subscription_preprocess_subscriptionthemeplaceorder	 admin	
+subscription	2011-10-07 12:44	subscription_set_editmode	 admin	
+subscription	2011-10-07 12:44	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:44	subscription_get_form_placeorder	 admin	
+subscription	2011-10-07 12:44	subscription_delete_subscription	 admin	
+subscription	2011-10-07 12:44	subscription_get_editmode	 admin	
+subscription	2011-10-07 12:44	subscription_new_placeorder	 admin	
+
+User fills out place order form (valid data)
+subscription	2011-10-07 12:46	subscription_validate_registration	 admin	
+subscription	2011-10-07 12:46	subscription_preprocess_subscriptionthemeregistration	 admin	
+subscription	2011-10-07 12:46	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:46	subscription_get_form_registration	 admin	
+subscription	2011-10-07 12:46	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:46	subscription_save_subscription	 admin	
+subscription	2011-10-07 12:46	subscription_validate_placeorder	 admin	
+subscription	2011-10-07 12:46	subscription_get_membershipoffer	 admin	
+subscription	2011-10-07 12:46	subscription_preprocess_subscriptionthemeplaceorder	 admin	
+subscription	2011-10-07 12:46	subscription_set_editmode	 admin	
+subscription	2011-10-07 12:46	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:46	subscription_get_form_placeorder	 admin	
+subscription	2011-10-07 12:46	subscription_delete_subscription	 admin	
+subscription	2011-10-07 12:46	subscription_get_editmode	 admin	
+subscription	2011-10-07 12:46	subscription_new_placeorder	 admin
+
+User fills out registration form (valid data)
+subscription	2011-10-07 12:47	subscription_validate_summary	 admin	
+subscription	2011-10-07 12:47	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:47	subscription_preprocess_subscriptionthemeplaceorder	 admin	
+subscription	2011-10-07 12:47	subscription_preprocess_subscriptionthemesummary	 admin	
+subscription	2011-10-07 12:47	subscription_get_form_summary	 admin	
+subscription	2011-10-07 12:47	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:47	subscription_save_subscription	 admin	
+subscription	2011-10-07 12:47	subscription_validate_registration	 admin	
+subscription	2011-10-07 12:47	subscription_preprocess_subscriptionthemeregistration	 admin	
+subscription	2011-10-07 12:47	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:47	subscription_get_form_registration	 admin
+
+User clicks on change po data
+subscription	2011-10-07 12:48	subscription_validate_placeorder	 admin	
+subscription	2011-10-07 12:48	subscription_get_membershipoffer	 admin	
+subscription	2011-10-07 12:48	subscription_preprocess_subscriptionthemeplaceorder	 admin	
+subscription	2011-10-07 12:48	subscription_set_editmode	 admin	
+subscription	2011-10-07 12:48	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:48	subscription_get_form_placeorder	 admin	
+subscription	2011-10-07 12:48	subscription_get_editmode	 admin	
+subscription	2011-10-07 12:48	subscription_new_placeorder	 admin	
+subscription	2011-10-07 12:48	subscription_set_editmode	 admin	
+subscription	2011-10-07 12:48	subscription_edit_placeorder	 admin	
+
+User saves changed data
+subscription	2011-10-07 12:48	subscription_validate_registration	 admin	
+subscription	2011-10-07 12:48	subscription_preprocess_subscriptionthemeregistration	 admin	
+subscription	2011-10-07 12:48	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:48	subscription_get_form_registration	 admin	
+subscription	2011-10-07 12:48	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:48	subscription_save_subscription	 admin	
+subscription	2011-10-07 12:48	subscription_validate_placeorder	 admin	
+subscription	2011-10-07 12:48	subscription_get_membershipoffer	 admin	
+subscription	2011-10-07 12:48	subscription_preprocess_subscriptionthemeplaceorder	 admin	
+subscription	2011-10-07 12:48	subscription_set_editmode	 admin	
+subscription	2011-10-07 12:48	subscription_get_subscription	 admin	
+subscription	2011-10-07 12:48	subscription_get_form_placeorder	 admin	
+subscription	2011-10-07 12:48	subscription_delete_subscription	 admin	
+subscription	2011-10-07 12:48	subscription_get_editmode	 admin	
+subscription	2011-10-07 12:48	subscription_new_placeorder	 admin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

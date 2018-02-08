@@ -1,0 +1,8 @@
+; $Id$
+name = subscription
+description = Membership subscription forms
+package = Andrew Harper
+core = 6.x
+
+dependencies[] = aherrormessages
+dependencies[] = ahmembershipoffer

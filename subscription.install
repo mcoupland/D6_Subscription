@@ -1,0 +1,316 @@
+<?php
+// %Id$
+
+/**
+ * @file
+ * subscription module installer
+ */
+ 
+/**
+ * Implement hook_install
+ */
+function subscription_install(){
+	drupal_install_schema('subscription');	
+	//_aherrormessages_insert_existing();
+}
+
+/**
+ * Implement hook_uninstall
+ */ 
+function subscription_uninstall(){
+	drupal_uninstall_schema('subscription');
+}
+
+/**
+ * Implement hook_schema to create table used by this module
+ */
+function subscription_schema(){
+	$schema = array();
+	$schema['subscribe'] = array(
+		'description' => 'Stores subscription form data',
+		'fields' => array(
+			'id' => array(
+				'type' => 'serial',
+				'unsigned' => TRUE,	
+				'description' => 'The {subscribe}.id',
+				'not null' => FALSE,
+			),
+			'selectedcountry' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'selectedcccountry' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'membershipofferid' => array(
+				'type' => 'int',
+				'unsigned' => TRUE,				
+				'default' => 0,
+				'description' => 'Offer this user is signing up for',
+			),
+			'dateupdated' => array(
+				'type' => 'datetime',
+			),
+			'edit' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),
+			'sessionid' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'ipaddress' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'prefix' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'firstname' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'middleinitial' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'lastname' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'businessname' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'suffix' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'country' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'address1' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'address2' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'address3' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'city' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'state' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'postalcode' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'daytimephone' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'mobilephone' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'email' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'secondemail' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'cctype' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'ccnumber' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),	
+			'ccexpmonth' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'ccexpyear' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),				
+			'ccname' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),	
+			'billingsame' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),		
+			'cccountry' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'ccaddress1' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'ccaddress2' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'cccity' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'ccstate' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'ccpostalcode' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'agreetoterms' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'username' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'password' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'confirmpassword' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'screenname' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'newslettersall' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),
+			'newsletters_fromtheeditor' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),
+			'newsletters_specialoffers' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),
+			'newsletters_harperauctions' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),
+			'newsletters_traveloffice' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),
+			'newsletters_porthos' => array(
+				'type' => 'int',
+				'length' => tiny,
+			),
+			'memberid' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			'responsecode' => array(
+				'type' => 'varchar',
+				'length' => 255,
+			),
+			
+		),
+		'primary key' => array(
+			'id',
+		),
+		'indexes' => array(
+			'id' => array('id'),
+		),
+	);
+	return $schema;
+} 
+
+
+/**
+ * Install existing (known) error messages
+ * this has to be done after the install somehow
+ */
+function _aherrormessages_insert_existing(){
+	_aherrormessages_insert('Invalid password', 'Invalid password', '101', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('No such user name', 'No such user name', '102', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Expired subscription', 'Expired subscription', '103', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('No subscription', 'No subscription', '104', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Duplicate user name', 'Duplicate user name', '105', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Cannot decrypt stored password', 'Cannot decrypt stored password', '106', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Cannot decrypt input', 'Cannot decrypt input', '107','', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Duplicate email address', 'Duplicate email address', '108', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Unknown error', 'Unknown error', '200', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Cannot convert expiration date', 'Cannot convert expiration date', '201', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Cannot convert start date', 'Cannot convert start date', '202', '', 'HarperLINQ.CustomerResponseCode');
+	_aherrormessages_insert('Cannot parse optin value', 'Cannot parse optin value', '301', '', 'CustomerService.ChargeCard');
+	_aherrormessages_insert('Cannot parse cc exp month value', 'Cannot parse cc exp month value', '302', '', 'CustomerService.ChargeCard');
+	_aherrormessages_insert('Cannot parse cc exp year value', 'Cannot parse cc exp year value', '303', '', 'CustomerService.ChargeCard');
+	_aherrormessages_insert('Cannot parse amount value', 'Cannot parse amount value', '304', '', 'CustomerService.ChargeCard');
+	_aherrormessages_insert('Cannot parse refresh customer value', 'Cannot parse refresh customer value', '305', '', 'CustomerService.ChargeCard');
+	_aherrormessages_insert('Unknown error charging cc', 'Unknown error charging cc', '306', '', 'CustomerService.ChargeCard');
+	_aherrormessages_insert('Cannot parse subscription length value', 'Cannot parse subscription length value', '401', '', 'CustomerService.CreateSubscription');
+	_aherrormessages_insert('Cannot parse amount paid value', 'Cannot parse amount paid value', '402', '', 'CustomerService.CreateSubscription');
+	_aherrormessages_insert('Cannot parse optin value (create subscription)', 'Cannot parse optin value (create subscription)', '403', '', 'CustomerService.CreateSubscription');
+	_aherrormessages_insert('Cannot parse gift flag value', 'Cannot parse gift flag value', '404', '', 'CustomerService.CreateSubscription');
+	_aherrormessages_insert('Cannot parse gift optin value', 'Cannot parse gift optin value', '405', '', 'CustomerService.CreateSubscription');
+	_aherrormessages_insert('Unknown error creating subscription', 'Unknown error creating subscription', '406', '', 'CustomerService.CreateSubscription');
+	_aherrormessages_insert('PREFIX_REQUIRED', 'Prefix field is required.', 'PREFIX_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('FIRSTNAME_REQUIRED', 'First Name field is required.', 'FIRSTNAME_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('LASTNAME_REQUIRED', 'Last Name field is required.', 'LASTNAME_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('COUNTRY_REQUIRED', 'Country field is required.', 'COUNTRY_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('ADDRESS1_REQUIRED', 'Address 1 field is required.', 'ADDRESS1_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('CITY_REQUIRED', 'City field is required.', 'CITY_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('STATE_REQUIRED', 'State/Region field is required.', 'STATE_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('ZIP_REQUIRED', 'Zip/Postal Code field is required.', 'ZIP_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('PHONE_REQUIRED', 'Phone field is required.', 'PHONE_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('EMAIL_REQUIRED', 'Email field is required.', 'EMAIL_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('EMAIL_INVALID_ERROR', 'Email is invalid.', 'EMAIL_INVALID_ERROR', '', 'DRUPAL');
+	_aherrormessages_insert('CCNUMBER_REQUIRED', 'Credit Card Number field is required.', 'CCNUMBER_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('CCNAME_REQUIRED', 'Name on Credit Card field is required.', 'CCNAME_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('CCTYPE_REQUIRED', 'Please select a Method of Payment.', 'CCTYPE_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('DATE_REQUIRED', 'Expiration Date field is required.', 'DATE_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('DATEINPAST_ERROR', 'Expiration Date cannot be in the past.', 'DATEINPAST_ERROR', '', 'DRUPAL');
+	_aherrormessages_insert('CCNUMBER_INVALID_ERROR', 'Please enter a valid credit card number.', 'CCNUMBER_INVALID_ERROR', '', 'DRUPAL');
+	_aherrormessages_insert('LOADING_STATUS', 'Loading...', 'LOADING_STATUS', '', 'DRUPAL', TRUE);
+	_aherrormessages_insert('CHECKING_AVAILABILITY_STATUS', 'Checking availability...', 'CHECKING_AVAILABILITY_STATUS', '', 'DRUPAL', TRUE);
+	_aherrormessages_insert('VALIDATING_CC_STATUS', 'Validating Credit Card Number...', 'VALIDATING_CC_STATUS', '', 'DRUPAL', TRUE);
+	_aherrormessages_insert('USERNAME_REQUIRED', 'User Name field is required.', 'USERNAME_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('SCREENNAME_REQUIRED', 'Screen Name field is required.', 'SCREENNAME_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('PASSWORD1_REQUIRED', 'Password field is required.', 'PASSWORD1_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('PASSWORD2_REQUIRED', 'Confirm Password field is required.', 'PASSWORD2_REQUIRED', '', 'DRUPAL');
+	_aherrormessages_insert('PASSWORD_CONFIRMPASSWORD_MISMATCH', 'The passwords must match.', 'PASSWORD_CONFIRMPASSWORD_MISMATCH', '', 'DRUPAL');
+	_aherrormessages_insert('USERNAME_UNAVAILABLE_ERROR', 'This User Name is not available.', 'USERNAME_UNAVAILABLE_ERROR', '', 'DRUPAL');
+	_aherrormessages_insert('SCREENNAME_UNAVAILABLE_ERROR', 'This Screen Name is not available.', 'SCREENNAME_UNAVAILABLE_ERROR', '', 'DRUPAL');
+	_aherrormessages_insert('PASSWORD_LENGTH_ERROR', 'Please use at least 7 characters in your password.', 'PASSWORD_LENGTH_ERROR', '', 'DRUPAL');
+	_aherrormessages_insert('AGREETOTERMS_REQUIRED', 'You must agree to the terms and conditions.', 'AGREETOTERMS_REQUIRED', '', 'DRUPAL');
+}
+
+function _aherrormessages_insert($title, $body, $errorcode, $vendorcode = '', $errorsource = ''){		
+	$formdata = new StdClass();
+	$formdata->type = 'aherrormessages';	
+	$formdata->title = $title;
+	$formdata->body = $body;
+	$formdata->errorcode = $errorcode;
+	$formdata->vendorcode = $vendorcode;
+	$formdata->errorsource = $errorsource;
+	node_save($formdata);	
+}

@@ -1,0 +1,164 @@
+<?php include_once(drupal_get_path('module', 'subscription').'/code/subscription-preprocess-placeorder.inc'); ?>
+<?php include_once(drupal_get_path('module', 'subscription').'/code/subscription-preprocess-registration.inc'); ?>
+<?php include_once(drupal_get_path('module', 'subscription').'/code/subscription-preprocess-summary.inc'); ?>
+<?php include_once(drupal_get_path('module', 'subscription').'/code/subscription-preprocess-confirmation.inc'); ?>
+<?php include_once(drupal_get_path('module', 'subscription').'/code/subscription-validate-form.inc'); ?>
+
+<?php
+
+//add menu callback for each page
+function subscription_menu(){
+	return array(
+		'subscribe' => array(
+			'page callback' => 'subscription_goto_join',
+			'access callback' => TRUE,
+			'type' => MENU_CALLBACK,
+		),
+		'subscribe/%' => array(
+			/** 
+			 * Handles calls to subscribe/[membership type]
+			 * Creates new data and redirects to /placeorder
+			 */
+			'page callback' => 'subscription_new_placeorder',
+			'access callback' => TRUE,
+			'file' => 'code/subscription-get-form-placeorder.inc',
+		),
+		'subscribe/editdata' => array(
+			/** 
+			 * Preps data for editing and redirects to /placeorder
+			 */
+			'page callback' => 'subscription_edit_placeorder',
+			'access callback' => TRUE,
+			'file' => 'code/subscription-get-form-placeorder.inc',
+		),
+		'subscribe/placeorder' => array(
+			'title' => 'Place Order',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('subscription_get_form_placeorder'),
+			'access callback' => TRUE,
+			'type' => MENU_CALLBACK,
+			'file' => 'code/subscription-get-form-placeorder.inc',
+		),
+		'subscribe/registration' => array(
+			'title' => 'Registration',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('subscription_get_form_registration'),
+			'access callback' => TRUE,
+			'type' => MENU_CALLBACK,
+			'file' => 'code/subscription-get-form-registration.inc',
+		),
+		'subscribe/summary' => array(
+			'title' => 'Summary',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('subscription_get_form_summary'),
+			'access callback' => TRUE,
+			'type' => MENU_CALLBACK,
+			'file' => 'code/subscription-get-form-summary.inc',
+		),
+		'subscribe/confirmation' => array(
+			'title' => 'Confirmation',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('subscription_get_form_confirmation'),
+			'access callback' => TRUE,
+			'type' => MENU_CALLBACK,
+			'file' => 'code/subscription-get-form-confirmation.inc',
+		),
+		'subscribe/getregions/%' => array(
+			'page callback' => 'subscription_get_regions',
+			'page arguments' => array(2),
+			'access callback' => TRUE,
+			'file' => 'code/subscription-json.inc',
+			'type' => MENU_CALLBACK,
+		),
+		'subscribe/getcountries/%' => array(
+			'page callback' => 'subscription_get_countries',
+			'page arguments' => array(2),
+			'access callback' => TRUE,
+			'file' => 'code/subscription-json.inc',
+			'type' => MENU_CALLBACK,
+		),
+		'subscribe/validateccnumber/%/%' => array(
+			'page callback' => 'subscription_validate_ccnumber',
+			'page arguments' => array(2, 3),
+			'access callback' => TRUE,
+			'file' => 'code/subscription-json.inc',
+			'type' => MENU_CALLBACK,
+		),
+		'subscribe/validateemail/%' => array(
+			'page callback' => 'subscription_validate_email',
+			'page arguments' => array(2),
+			'access callback' => TRUE,
+			'file' => 'code/subscription-json.inc',
+			'type' => MENU_CALLBACK,
+		),
+		'subscribe/isavailablenameemail/%' => array(
+			'page callback' => 'subscription_isavailable_nameemail',
+			'page arguments' => array(2),
+			'access callback' => TRUE,
+			'file' => 'code/subscription-json.inc',
+			'type' => MENU_CALLBACK,
+		),
+	);
+}
+
+//specify template to use for the form (based on theme name)
+function subscription_theme(&$existing, $type, $theme, $path) {
+	$modulepath = drupal_get_path('module', 'subscription');
+	return array(
+		'subscriptionthemeplaceorder' => array(
+			'template' => 'templates/subscription_form_template_placeorder',
+			'arguments' => array('form' => NULL),
+		),
+		'subscriptionthemeregistration' => array(
+			'template' => 'templates/subscription_form_template_registration',
+			'arguments' => array('form' => NULL),
+		),
+		'subscriptionthemesummary' => array(
+			'template' => 'templates/subscription_form_template_summary',
+			'arguments' => array('form' => NULL),
+		),
+		'subscriptionthemeconfirmation' => array(
+			'template' => 'templates/subscription_form_template_confirmation',
+			'arguments' => array('form' => NULL),
+		),
+	);
+}
+
+//specify location of page template
+function subscription_theme_registry_alter(&$theme_registry) {	
+	$theme_hook = 'page'; 
+	$modulepath = drupal_get_path('module', 'subscription').'/templates';
+	array_unshift($theme_registry[$theme_hook]['theme paths'], $modulepath);
+}
+
+//specify template to use for the page
+function subscription_preprocess_page(&$variables) {
+	$page = explode("/", $_GET['q']);
+	switch($page[0]){
+		case 'subscribe':			
+			$variables['template_file'] = 'subscription-page-template';	
+			switch($page[1]){
+				case 'registration':
+					$variables['js_file'] = $base_uri.'/'.drupal_get_path('module', 'subscription').'/js/registration.js';
+					$variables['header_image'] = '/img/CartHeader_Registration.gif';
+					break;
+				case 'summary':
+					$variables['js_file'] = $base_uri.'/'.drupal_get_path('module', 'subscription').'/js/summary.js';
+					$variables['header_image'] = '/img/CartHeader_Summary.gif';
+					break;
+				case 'confirmation':
+					$variables['header_image'] = '/img/CartHeader_Confirmation.gif';
+					break;
+				default:
+					$variables['js_file'] = $base_uri.'/'.drupal_get_path('module', 'subscription').'/js/placeorder.js';
+					$variables['header_image'] = '/img/CartHeader_PlaceYourOrder.gif';
+					break;
+			}
+			break;
+    }
+	
+}
+
+function subscription_goto_join(){
+	drupal_goto('join');
+}
